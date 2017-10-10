@@ -1,0 +1,4 @@
+#+TITLE: Jack Stack
+#+AUTHOR: Mac Radigan
+
+ # *EOF* 
