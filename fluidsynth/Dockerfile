@@ -1,5 +1,7 @@
 ## Dockerfile for fluidsynth
-## Mac Radigan
+##
+## Copyright 2016 Mac Radigan
+## All Rights Reserved
 
   FROM ubuntu:latest
 

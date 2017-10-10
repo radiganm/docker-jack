@@ -1,4 +1,4 @@
-## Dockerfile for timidity
+## Dockerfile for firefox
 ##
 ## Copyright 2016 Mac Radigan
 ## All Rights Reserved
@@ -16,14 +16,14 @@
   ## install packages
   RUN apt-get update &&      \
       apt-get install -y     \
-      timidity                
+      firefox                 
 
   RUN mkdir -p /opt
 
   # clean up APT
   RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-  # timidity entry point
+  # firefox entry point
   ADD ./ctl /usr/bin
   RUN chmod 775 /usr/bin/ctl
   ENTRYPOINT ["/usr/bin/ctl"]

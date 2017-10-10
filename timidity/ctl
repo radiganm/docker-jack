@@ -1,6 +1,5 @@
 #!/bin/bash
 ## ctl
-## Mac Radigan
 ##
 ## Copyright 2016 Mac Radigan
 ## All Rights Reserved
@@ -19,6 +18,7 @@
     >&2 cat <<-EOT 
 		$f [args]
 			  timidity                   - run timidity
+			  moonlight                  - play Moonlight Sonata
 EOT
     exit ${S__SUCCESS}
   }
@@ -88,7 +88,10 @@ EOT
   cmd=$1; shift
   case $cmd in
     timidity)
-      /usr/local/bin/timidity $*
+      /usr/bin/timidity -Oj $*
+      ;;
+    moonlight)
+      /usr/bin/timidity -Os /data/moonlight1-a4.midi
       ;;
     util)
       util $*

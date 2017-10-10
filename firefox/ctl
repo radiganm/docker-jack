@@ -17,7 +17,7 @@
   {
     >&2 cat <<-EOT 
 		$f [args]
-			  fluidsynth                   - run fluidsynth
+			  firefox                   - run firefox
 EOT
     exit ${S__SUCCESS}
   }
@@ -86,8 +86,8 @@ EOT
 
   cmd=$1; shift
   case $cmd in
-    fluidsynth)
-      /usr/bin/fluidsynth --audio-driver=jack $*
+    firefox)
+      /usr/bin/firefox
       ;;
     util)
       util $*

@@ -1,5 +1,7 @@
-## Dockerfile for jack2
-## Mac Radigan
+## Dockerfile for jack1
+##
+## Copyright 2016 Mac Radigan
+## All Rights Reserved
 
   FROM ubuntu:latest
 
@@ -14,14 +16,18 @@
   ## install packages
   RUN apt-get update &&      \
       apt-get install -y     \
-      jack2                   
+      jackd1                 \
+      alsa                   \
+      alsa-utils             \
+      qjackctl
+     #jackd2                  
 
   RUN mkdir -p /opt
 
   # clean up APT
   RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-  # jack2 entry point
+  # jack entry point
   ADD ./ctl /usr/bin
   RUN chmod 775 /usr/bin/ctl
   ENTRYPOINT ["/usr/bin/ctl"]

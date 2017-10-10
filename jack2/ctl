@@ -1,6 +1,5 @@
 #!/bin/bash
 ## ctl
-## Mac Radigan
 ##
 ## Copyright 2016 Mac Radigan
 ## All Rights Reserved
@@ -18,7 +17,7 @@
   {
     >&2 cat <<-EOT 
 		$f [args]
-			  jack2                   - run jack2
+			  jack                   - run jack
 EOT
     exit ${S__SUCCESS}
   }
@@ -71,10 +70,20 @@ EOT
     esac
   }
 
-  run()
+  run_jack1()
   {
     cmd=$1; shift
     $cmd $*
+    jackd -R -d alsa -d hw:1
+    qjackctl
+  }
+
+  run_jack2()
+  {
+    cmd=$1; shift
+    $cmd $*
+    jack_control start
+    qjackctl
   }
 
   sigint()
@@ -87,8 +96,11 @@ EOT
 
   cmd=$1; shift
   case $cmd in
+    jack|jack1)
+      run_jack1
+      ;;
     jack2)
-      /usr/local/bin/jack2 $*
+      run_jack2
       ;;
     util)
       util $*
